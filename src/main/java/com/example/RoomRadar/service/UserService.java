@@ -14,11 +14,11 @@ public interface UserService {
     List<UserDTO> getAllUsers();
     UserDTO getUserById(Long id);
     UserDTO updateUser(Long id, UserDTO userDTO, MultipartFile imageFile) throws IOException;
-    IdToken.Payload verifyGoogleToken(String token) throws Exception;
+    // IdToken.Payload verifyGoogleToken(String token) throws Exception;
     void deleteUser(Long id);
     String checkEmailExists(String email);
     String checkPhoneExists(String phone);
     UserDTO getUserByEmail(String email);
-    User findOrCreateGoogleUser(String email);
+    // User findOrCreateGoogleUser(String email);
 
 }

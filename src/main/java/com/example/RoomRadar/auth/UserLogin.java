@@ -83,26 +83,26 @@ public class UserLogin {
 
 
 
-    @PostMapping("/auth/google")
-    public ResponseEntity<?> googleLogin(@RequestParam String email) {
-        try {
-            User user = userService.findOrCreateGoogleUser(email);
-
-            // Log to verify user is returned or created
-            System.out.println("User ID: " + user.getId());
-
-            String token = jwtUtils.generateJwtToken(user.getEmail());
-
-            return ResponseEntity.ok(Map.of(
-                    "user", user,
-                    "token", token
-            ));
-        } catch (Exception e) {
-            e.printStackTrace(); // log full error
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error processing Google login: " + e.getMessage());
-        }
-    }
+//    @PostMapping("/auth/google")
+//    public ResponseEntity<?> googleLogin(@RequestParam String email) {
+//        try {
+//            User user = userService.findOrCreateGoogleUser(email);
+//
+//            // Log to verify user is returned or created
+//            System.out.println("User ID: " + user.getId());
+//
+//            String token = jwtUtils.generateJwtToken(user.getEmail());
+//
+//            return ResponseEntity.ok(Map.of(
+//                    "user", user,
+//                    "token", token
+//            ));
+//        } catch (Exception e) {
+//            e.printStackTrace(); // log full error
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body("Error processing Google login: " + e.getMessage());
+//        }
+//    }
 
 
 

@@ -134,38 +134,38 @@ public class Userserviceimpl implements UserService {
     }
 
 
-    @Override
-    public GoogleIdToken.Payload verifyGoogleToken(String token) throws Exception {
-        try {
-            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier
-                    .Builder(new NetHttpTransport(), new JacksonFactory())
-                    .setAudience(Collections.singletonList("299037829972-djf5trl1ei4fb9fqo88rc7ipsf8kskr9.apps.googleusercontent.com")) // Replace with your client ID
-                    .build();
-
-            GoogleIdToken idToken = verifier.verify(token);
-            return idToken != null ? idToken.getPayload() : null;
-
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    @Override
-    public User findOrCreateGoogleUser(String email) {
-        if (email == null) {
-            throw new IllegalArgumentException("Email cannot be null");
-        }
-
-        return userRepository.findByEmail(email).orElseGet(() -> {
-            User newUser = new User();
-            newUser.setEmail(email);
-            newUser.setFullName(" ");
-            newUser.setPassword(UUID.randomUUID().toString());
-            newUser.setCreatedAt(LocalDateTime.now());
-            newUser.setUpdatedAt(LocalDateTime.now());
-            return userRepository.save(newUser);
-        });
-    }
+//    @Override
+//    public GoogleIdToken.Payload verifyGoogleToken(String token) throws Exception {
+//        try {
+//            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier
+//                    .Builder(new NetHttpTransport(), new JacksonFactory())
+//                    .setAudience(Collections.singletonList("299037829972-djf5trl1ei4fb9fqo88rc7ipsf8kskr9.apps.googleusercontent.com")) // Replace with your client ID
+//                    .build();
+//
+//            GoogleIdToken idToken = verifier.verify(token);
+//            return idToken != null ? idToken.getPayload() : null;
+//
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
+//
+//    @Override
+//    public User findOrCreateGoogleUser(String email) {
+//        if (email == null) {
+//            throw new IllegalArgumentException("Email cannot be null");
+//        }
+//
+//        return userRepository.findByEmail(email).orElseGet(() -> {
+//            User newUser = new User();
+//            newUser.setEmail(email);
+//            newUser.setFullName(" ");
+//            newUser.setPassword(UUID.randomUUID().toString());
+//            newUser.setCreatedAt(LocalDateTime.now());
+//            newUser.setUpdatedAt(LocalDateTime.now());
+//            return userRepository.save(newUser);
+//        });
+//    }
 
 
 
