@@ -8,10 +8,6 @@ import com.example.RoomRadar.Repository.UserRepository;
 import com.example.RoomRadar.exception.ResourceNotFoundException;
 import com.example.RoomRadar.mapper.UserMapper;
 import com.example.RoomRadar.service.UserService;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -132,40 +128,6 @@ public class Userserviceimpl implements UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         return UserMapper.toDTO(user);
     }
-
-
-//    @Override
-//    public GoogleIdToken.Payload verifyGoogleToken(String token) throws Exception {
-//        try {
-//            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier
-//                    .Builder(new NetHttpTransport(), new JacksonFactory())
-//                    .setAudience(Collections.singletonList("299037829972-djf5trl1ei4fb9fqo88rc7ipsf8kskr9.apps.googleusercontent.com")) // Replace with your client ID
-//                    .build();
-//
-//            GoogleIdToken idToken = verifier.verify(token);
-//            return idToken != null ? idToken.getPayload() : null;
-//
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    @Override
-//    public User findOrCreateGoogleUser(String email) {
-//        if (email == null) {
-//            throw new IllegalArgumentException("Email cannot be null");
-//        }
-//
-//        return userRepository.findByEmail(email).orElseGet(() -> {
-//            User newUser = new User();
-//            newUser.setEmail(email);
-//            newUser.setFullName(" ");
-//            newUser.setPassword(UUID.randomUUID().toString());
-//            newUser.setCreatedAt(LocalDateTime.now());
-//            newUser.setUpdatedAt(LocalDateTime.now());
-//            return userRepository.save(newUser);
-//        });
-//    }
 
 
 
