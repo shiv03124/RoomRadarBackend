@@ -32,10 +32,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String path = request.getRequestURI();
         String method = request.getMethod();
 
-        // ✅ Log current path for debugging (optional)
-        System.out.println("🔍 JwtAuthenticationFilter called for: " + method + " " + path);
-
-        // ✅ Skip JWT validation for public endpoints
+        // 🔓 Skip JWT auth for public endpoints
         if (isPublicEndpoint(path, method)) {
             filterChain.doFilter(request, response);
             return;
@@ -51,10 +48,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-                    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities());
-                    auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(auth);
+                    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authToken);
                 }
             }
         }
@@ -62,9 +59,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    // ✅ Define publicly accessible endpoints here
     private boolean isPublicEndpoint(String path, String method) {
-        return path.contains("/auth/login")
-                || path.contains("/auth/auth/google")
+        return path.startsWith("/auth")
+                || path.startsWith("/api/auth")
                 || path.startsWith("/api/users")
                 || path.startsWith("/api/otp")
                 || (path.startsWith("/api/rooms") && method.equalsIgnoreCase("GET"));
