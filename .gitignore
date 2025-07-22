@@ -33,7 +33,7 @@
 #.vscode/
 #src/main/resources/application.properties
 # === Ignore application secrets ===
-.env
+#.env
 src/main/resources/application.properties
 
 # === Maven target directory ===
