@@ -5,15 +5,16 @@ public class AdminDTO {
     private String fullName;
     private String email;
     private String role;
-
+    private String password;
     // Constructors
     public AdminDTO() {}
 
-    public AdminDTO(Long id, String fullName, String email, String role) {
+    public AdminDTO(Long id, String fullName, String email, String role, String password) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.role = role;
+        this.password=password;
     }
 
     // Getters & Setters
@@ -48,6 +49,14 @@ public class AdminDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 

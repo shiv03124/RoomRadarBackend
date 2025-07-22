@@ -11,6 +11,7 @@ public class AdminMapper {
         dto.setFullName(admin.getFullName());
         dto.setEmail(admin.getEmail());
         dto.setRole(admin.getRole());
+        dto.setPassword(admin.getPassword());
         return dto;
     }
 
@@ -20,6 +21,7 @@ public class AdminMapper {
         admin.setFullName(dto.getFullName());
         admin.setEmail(dto.getEmail());
         admin.setRole(dto.getRole());
+        admin.setPassword(dto.getPassword());
         return admin;
     }
 }
