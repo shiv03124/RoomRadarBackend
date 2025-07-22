@@ -19,7 +19,7 @@
         WORKDIR /app
 
         # Copy the executable JAR file into the container
-        COPY target/RoomRadar-0.0.1-SNAPSHOT.jar /app/RoomRadar-0.0.1-SNAPSHOT.jar
+        COPY src/RoomRadar-0.0.1-SNAPSHOT.jar /app/RoomRadar-0.0.1-SNAPSHOT.jar
         COPY .env /app/.env
 
         # Expose the port your application listens on (if applicable)
