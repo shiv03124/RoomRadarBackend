@@ -21,7 +21,7 @@ public class RoomDTO {
     private String furnished;
     private LocalDate availableFrom;
     private Double rent;
-    private int totalNoOfpeople;
+    private int totalNoOfPeoples;
     private Double securityDeposit;
     private String preferredGender;
     private Boolean isAvailable;
@@ -222,11 +222,12 @@ public class RoomDTO {
         this.approvedBy = approvedBy;
     }
 
-    public int getTotalNoOfpeople() {
-        return totalNoOfpeople;
+
+    public int getTotalNoOfPeoples() {
+        return totalNoOfPeoples;
     }
 
-    public void setTotalNoOfpeople(int totalNoOfpeople) {
-        this.totalNoOfpeople = totalNoOfpeople;
+    public void setTotalNoOfPeoples(int totalNoOfPeoples) {
+        this.totalNoOfPeoples = totalNoOfPeoples;
     }
 }
