@@ -23,6 +23,9 @@ public class Room {
     private String area;
     private int noofvacancies;
     private String totalNoOfPeople;
+    @Column(nullable = true) // or just omit the NOT NULL part
+    private int totalNoOfPeoples;
+
     private String configuration;
 
 
@@ -245,11 +248,11 @@ public class Room {
         this.approvedBy = approvedBy;
     }
 
-    public String getTotalNoOfPeople() {
-        return totalNoOfPeople;
+    public int getTotalNoOfPeoples() {
+        return totalNoOfPeoples;
     }
 
-    public void setTotalNoOfPeople(String totalNoOfPeople) {
-        this.totalNoOfPeople = totalNoOfPeople;
+    public void setTotalNoOfPeoples(int totalNoOfPeople) {
+        this.totalNoOfPeoples = totalNoOfPeople;
     }
 }

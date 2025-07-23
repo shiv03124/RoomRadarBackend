@@ -31,7 +31,7 @@ public class RoomMapper {
         dto.setIsAvailable(room.getIsAvailable());
         dto.setImages(room.getImages());
         dto.setAmenities(room.getAmenities());
-        dto.setTotalNoOfpeople(room.getTotalNoOfPeople());
+        dto.setTotalNoOfpeople(room.getTotalNoOfPeoples());
         dto.setNoofvacancies(room.getNoofvacancies());
         dto.setCreatedAt(room.getCreatedAt());
         dto.setUpdatedAt(room.getUpdatedAt());
@@ -88,7 +88,7 @@ public class RoomMapper {
         room.setStatus(dto.getStatus());
         room.setAmenities(dto.getAmenities());
         room.setNoofvacancies(dto.getNoofvacancies());
-        room.setTotalNoOfPeople(dto.getTotalNoOfpeople());
+        room.setTotalNoOfPeoples(dto.getTotalNoOfpeople());
         room.setCreatedAt(dto.getCreatedAt());
         room.setUpdatedAt(dto.getUpdatedAt());
 
