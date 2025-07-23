@@ -21,6 +21,7 @@ public class RoomDTO {
     private String furnished;
     private LocalDate availableFrom;
     private Double rent;
+    private String totalNoOfpeople;
     private Double securityDeposit;
     private String preferredGender;
     private Boolean isAvailable;
@@ -219,5 +220,13 @@ public class RoomDTO {
 
     public void setApprovedBy(AdminDTO approvedBy) {
         this.approvedBy = approvedBy;
+    }
+
+    public String getTotalNoOfpeople() {
+        return totalNoOfpeople;
+    }
+
+    public void setTotalNoOfpeople(String totalNoOfpeople) {
+        this.totalNoOfpeople = totalNoOfpeople;
     }
 }

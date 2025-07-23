@@ -22,6 +22,7 @@ public class Room {
     private String city;
     private String area;
     private int noofvacancies;
+    private String totalNoOfPeople;
     private String configuration;
 
 
@@ -242,5 +243,13 @@ public class Room {
 
     public void setApprovedBy(Admin approvedBy) {
         this.approvedBy = approvedBy;
+    }
+
+    public String getTotalNoOfPeople() {
+        return totalNoOfPeople;
+    }
+
+    public void setTotalNoOfPeople(String totalNoOfPeople) {
+        this.totalNoOfPeople = totalNoOfPeople;
     }
 }
