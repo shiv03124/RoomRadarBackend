@@ -22,7 +22,6 @@ public class Room {
     private String city;
     private String area;
     private int noofvacancies;
-    private String totalNoOfPeople;
     @Column(nullable = true) // or just omit the NOT NULL part
     private int totalNoOfPeoples;
 

@@ -19,7 +19,7 @@ public class EmailOtpController {
     @Autowired
     private  EmailService emailOtpService;
 
-
+    
     // Endpoint to request/send OTP to email
     @PostMapping("/send")
     public ResponseEntity<String> sendOtp(@RequestParam String email) {

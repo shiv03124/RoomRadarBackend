@@ -79,16 +79,31 @@
             return NoOpPasswordEncoder.getInstance(); // For dev only — use BCrypt in production!
         }
 
+//        @Bean
+//        CorsConfigurationSource corsConfigurationSource() {
+//            CorsConfiguration config = new CorsConfiguration();
+////            config.setAllowedOrigins(List.of("https://room-radar-kappa.vercel.app"));
+//            config.setAllowedOrigins(List.of("*"));
+//            config.setAllowCredentials(true);
+//            config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//            config.setAllowedHeaders(List.of("*"));
+//
+//            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//            source.registerCorsConfiguration("/**", config);
+//            return source;
+//        }
+
         @Bean
         CorsConfigurationSource corsConfigurationSource() {
             CorsConfiguration config = new CorsConfiguration();
-            config.setAllowedOrigins(List.of("https://room-radar-kappa.vercel.app")); // Your frontend
+            config.setAllowedOriginPatterns(List.of("*")); // ✅ Use this instead of setAllowedOrigins
+            config.setAllowCredentials(true);              // ✅ Safe now with allowedOriginPatterns
             config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             config.setAllowedHeaders(List.of("*"));
-            config.setAllowCredentials(true);
 
             UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
             source.registerCorsConfiguration("/**", config);
             return source;
         }
+
     }
