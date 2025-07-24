@@ -23,7 +23,7 @@
         COPY .env /app/.env
 
         # Expose the port your application listens on (if applicable)
-        EXPOSE 8081
+        EXPOSE 8080
 
         # Define the command to run your application when the container starts
         CMD ["java", "-jar", "RoomRadar-0.0.1-SNAPSHOT.jar"]
