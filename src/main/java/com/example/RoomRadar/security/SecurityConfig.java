@@ -26,23 +26,6 @@
         @Autowired
         private CustomUserDetailsService customUserDetailsService;
 
-//        @Bean
-//        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//            http
-//                    .cors().and()
-//                    .csrf(csrf -> csrf.disable())
-//                    .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                    .authorizeHttpRequests(auth -> auth
-//                            .requestMatchers("/auth/**", "/api/users/**", "/api/otp/**", "/api/auth/**","/api/admins/createAdmin").permitAll()
-//                            .requestMatchers(HttpMethod.GET, "/api/rooms/**").permitAll()
-//                            .anyRequest().authenticated()
-//                    )
-//                    .authenticationProvider(authenticationProvider())
-//                    .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-//
-//            return http.build();
-//        }
-
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
             http
@@ -52,6 +35,7 @@
                     .authorizeHttpRequests(auth -> auth
                             .requestMatchers("/auth/**", "/api/users/**", "/api/otp/**", "/api/auth/**", "/api/admins/createAdmin").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/rooms/**").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/rooms/approved").permitAll()
                             .anyRequest().authenticated()
                     )
                     .authenticationProvider(authenticationProvider())
@@ -79,19 +63,6 @@
             return NoOpPasswordEncoder.getInstance(); // For dev only — use BCrypt in production!
         }
 
-//        @Bean
-//        CorsConfigurationSource corsConfigurationSource() {
-//            CorsConfiguration config = new CorsConfiguration();
-////            config.setAllowedOrigins(List.of("https://room-radar-kappa.vercel.app"));
-//            config.setAllowedOrigins(List.of("*"));
-//            config.setAllowCredentials(true);
-//            config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-//            config.setAllowedHeaders(List.of("*"));
-//
-//            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//            source.registerCorsConfiguration("/**", config);
-//            return source;
-//        }
 
         @Bean
         CorsConfigurationSource corsConfigurationSource() {
