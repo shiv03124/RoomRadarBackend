@@ -1,18 +1,4 @@
-#FROM openjdk:17-jdk-slim
-#
-#CMD ["java", "-jar", "target/RoomRadar-0.0.1-SNAPSHOT.jar"]
-#WORKDIR /app
-#
-#COPY . .
-#
-#RUN chmod +x ./mvnw
-#WORKDIR /app
-#COPY target/your-application.jar /app/your-application.jar
-#RUN ./mvnw clean package -DskipTests
-#
-#EXPOSE 8080
 
-        # Use a base OpenJDK image
         FROM openjdk:17-jdk-slim
 
         # Set the working directory inside the container

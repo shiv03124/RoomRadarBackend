@@ -5,10 +5,19 @@ import com.example.RoomRadar.Model.RoomStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface RoomRepository extends JpaRepository<Room, Long>, JpaSpecificationExecutor<Room> {
+    @Query("SELECT r FROM Room r WHERE r.status = :status AND r.accommodationType = :accommodationType " +
+            "AND r.id NOT IN (SELECT a.room.id FROM Application a WHERE a.applicant.id = :userId)")
+    List<Room> findApprovedAndNotAppliedByUser(@Param("status") RoomStatus status,
+                                               @Param("accommodationType") String accommodationType,
+                                               @Param("userId") Long userId);
+    @Query("SELECT r FROM Room r WHERE r.status = :status AND r.accommodationType = :accommodationType")
+    List<Room> findByStatusAndAccommodationType(@Param("status") RoomStatus status,
+                                                @Param("accommodationType") String accommodationType);
 
     // All rooms by a specific user with a given status
     List<Room> findByStatusAndUserId(RoomStatus status, Long userId);

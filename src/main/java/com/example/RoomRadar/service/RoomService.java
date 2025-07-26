@@ -18,8 +18,8 @@ public interface RoomService {
 
     // Returns approved room by ID
     RoomDTO getRoomById(Long roomId);
-
-    // Returns all approved rooms
+    List<RoomDTO> getApprovedRoomsByAccommodationType(String accommodationType);
+    List<RoomDTO> getApprovedRoomsNotAppliedByUser(String accommodationType, Long userId);
     List<RoomDTO> getAllRooms();
     List<RoomDTO> getAllRoomsForAdmin();
 

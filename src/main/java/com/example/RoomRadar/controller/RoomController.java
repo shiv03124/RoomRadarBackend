@@ -86,6 +86,24 @@ public class RoomController {
         return roomService.getAllRoomsForAdmin();
     }
 
+    @GetMapping("/approved")
+    public ResponseEntity<List<RoomDTO>> getApprovedRooms(
+            @RequestParam String accommodationType,
+            @RequestParam(required = false) Long userId) {
+
+        List<RoomDTO> rooms;
+
+        if (userId != null) {
+            rooms = roomService.getApprovedRoomsNotAppliedByUser(accommodationType, userId);
+        } else {
+            rooms = roomService.getApprovedRoomsByAccommodationType(accommodationType);
+        }
+
+        return ResponseEntity.ok(rooms);
+    }
+
+
+
     @PutMapping(value = "/update-with-images/{roomId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<RoomDTO> updateRoomWithImages(
             @PathVariable Long roomId,

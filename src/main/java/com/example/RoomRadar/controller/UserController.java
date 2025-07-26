@@ -1,6 +1,7 @@
 package com.example.RoomRadar.controller;
 
 
+import com.example.RoomRadar.DTO.RoomDTO;
 import com.example.RoomRadar.DTO.UserDTO;
 import com.example.RoomRadar.DTO.UserLoginRequest;
 import com.example.RoomRadar.Model.User;
@@ -53,6 +54,8 @@ public class UserController {
 
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
+
+
 
 
     @GetMapping("/check-email")

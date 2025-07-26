@@ -76,6 +76,7 @@ public class RoomServiceImpl implements RoomService {
         return RoomMapper.toDTO(savedRoom);
     }
 
+
     @Override
     @Transactional
     public RoomDTO updateRoomWithImages(Long roomId, RoomDTO roomDTO, MultipartFile[] imageFiles) throws IOException {
@@ -159,8 +160,22 @@ public class RoomServiceImpl implements RoomService {
             emailService.sendEmail(email, subject, message);  // ⬅️ you'll implement this
         }
 
+
         // Delete room
         roomRepository.delete(room);
+    }
+
+
+    @Override
+    public List<RoomDTO> getApprovedRoomsByAccommodationType(String accommodationType) {
+        List<Room> rooms = roomRepository.findByStatusAndAccommodationType(RoomStatus.APPROVED, accommodationType);
+        return rooms.stream().map(RoomMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RoomDTO> getApprovedRoomsNotAppliedByUser(String accommodationType, Long userId) {
+        List<Room> rooms = roomRepository.findApprovedAndNotAppliedByUser(RoomStatus.APPROVED, accommodationType, userId);
+        return rooms.stream().map(RoomMapper::toDTO).collect(Collectors.toList());
     }
 
 
