@@ -12,6 +12,7 @@ public interface RoomService {
 
     RoomDTO updateRoomWithImages(Long roomId, RoomDTO roomDTO, MultipartFile[] imageFiles) throws IOException;
 
+    List<RoomDTO> getRoomsByTypeExcludingUser(String accommodationType, Long userId);
 
     List<RoomDTO> getRoomsByStatus(RoomStatus status);
     List<RoomDTO> getRoomsNotAppliedByUser(Long userId);

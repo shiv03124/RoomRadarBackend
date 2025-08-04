@@ -102,6 +102,13 @@ public class RoomController {
         return ResponseEntity.ok(rooms);
     }
 
+    @GetMapping("/type")
+    public List<RoomDTO> getRoomsByTypeAndExcludingUser(
+            @RequestParam String accommodationType,
+            @RequestParam Long userId
+    ) {
+        return roomService.getRoomsByTypeExcludingUser(accommodationType, userId);
+    }
 
 
     @PutMapping(value = "/update-with-images/{roomId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

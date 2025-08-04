@@ -19,6 +19,8 @@ public interface RoomRepository extends JpaRepository<Room, Long>, JpaSpecificat
     List<Room> findByStatusAndAccommodationType(@Param("status") RoomStatus status,
                                                 @Param("accommodationType") String accommodationType);
 
+    @Query("SELECT r FROM Room r WHERE r.accommodationType = :type AND r.user.id <> :userId AND r.status = com.example.RoomRadar.Model.RoomStatus.APPROVED")
+    List<Room> findByAccommodationTypeAndNotUserId(@Param("type") String accommodationType, @Param("userId") Long userId);
     // All rooms by a specific user with a given status
     List<Room> findByStatusAndUserId(RoomStatus status, Long userId);
 

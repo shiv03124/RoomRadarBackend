@@ -178,6 +178,12 @@ public class RoomServiceImpl implements RoomService {
         return rooms.stream().map(RoomMapper::toDTO).collect(Collectors.toList());
     }
 
+    @Override
+    public List<RoomDTO> getRoomsByTypeExcludingUser(String accommodationType, Long userId) {
+        List<Room> rooms = roomRepository.findByAccommodationTypeAndNotUserId(accommodationType, userId);
+        return rooms.stream().map(RoomMapper::toDTO).collect(Collectors.toList());
+    }
+
 
     @Override
     public List<RoomDTO> getRoomsByUserId(Long userId) {
