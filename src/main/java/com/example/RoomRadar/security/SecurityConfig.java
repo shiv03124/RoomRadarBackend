@@ -67,15 +67,17 @@
         @Bean
         CorsConfigurationSource corsConfigurationSource() {
             CorsConfiguration config = new CorsConfiguration();
-            config.setAllowedOrigins(List.of("https://www.roomradar.in")); // ✅ Exact domain, not *
-            config.setAllowCredentials(true);                              // ✅ OK now
+            config.setAllowedOrigins(List.of("https://roomradar.in", "https://www.roomradar.in"));
+            config.setAllowCredentials(true);
             config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             config.setAllowedHeaders(List.of("*"));
+            config.setExposedHeaders(List.of("Authorization", "Content-Type"));
 
             UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
             source.registerCorsConfiguration("/**", config);
             return source;
         }
+
 
 
     }
