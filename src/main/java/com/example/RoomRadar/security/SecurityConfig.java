@@ -67,8 +67,8 @@
         @Bean
         CorsConfigurationSource corsConfigurationSource() {
             CorsConfiguration config = new CorsConfiguration();
-            config.setAllowedOriginPatterns(List.of("*")); // ✅ Use this instead of setAllowedOrigins
-            config.setAllowCredentials(true);              // ✅ Safe now with allowedOriginPatterns
+            config.setAllowedOrigins(List.of("https://www.roomradar.in")); // ✅ Exact domain, not *
+            config.setAllowCredentials(true);                              // ✅ OK now
             config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             config.setAllowedHeaders(List.of("*"));
 
@@ -76,5 +76,6 @@
             source.registerCorsConfiguration("/**", config);
             return source;
         }
+
 
     }
