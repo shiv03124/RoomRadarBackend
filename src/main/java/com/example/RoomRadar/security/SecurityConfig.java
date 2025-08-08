@@ -33,7 +33,7 @@
                     .csrf(csrf -> csrf.disable())
                     .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authorizeHttpRequests(auth -> auth
-                            .requestMatchers("/auth/**", "/api/users/**", "/api/otp/**", "/api/auth/**", "/api/admins/createAdmin").permitAll()
+                            .requestMatchers("/auth/**", "/api/users/**", "/api/otp/**", "/api/auth/**", "/api/admins/createAdmin","/").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/rooms/**").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/rooms/approved").permitAll()
                             .anyRequest().authenticated()
