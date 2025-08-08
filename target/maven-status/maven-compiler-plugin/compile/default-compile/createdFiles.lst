@@ -15,6 +15,7 @@ com\example\RoomRadar\DTO\GoogleSignInRequest.class
 com\example\RoomRadar\mapper\AdminMapper.class
 com\example\RoomRadar\service\ApplicationService.class
 com\example\RoomRadar\config\CloudinaryConfig.class
+com\example\RoomRadar\controller\CronController.class
 com\example\RoomRadar\service\UserService.class
 com\example\RoomRadar\serviceImpl\AdminserviceImpl.class
 com\example\RoomRadar\Repository\ApplicationRepository.class
