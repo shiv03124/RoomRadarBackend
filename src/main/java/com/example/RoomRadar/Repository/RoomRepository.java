@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RoomRepository extends JpaRepository<Room, Long>, JpaSpecificationExecutor<Room> {
     @Query("SELECT r FROM Room r WHERE r.status = :status AND r.accommodationType = :accommodationType " +
@@ -37,5 +38,7 @@ public interface RoomRepository extends JpaRepository<Room, Long>, JpaSpecificat
     @Query("SELECT r FROM Room r WHERE r.status = 'APPROVED' AND r.id NOT IN (" +
             "SELECT a.room.id FROM Application a WHERE a.applicant.id = :userId)")
     List<Room> findApprovedRoomsNotAppliedByUser(Long userId);
+
+    Optional<Room> findByPublicId(String publicId);
 
 }

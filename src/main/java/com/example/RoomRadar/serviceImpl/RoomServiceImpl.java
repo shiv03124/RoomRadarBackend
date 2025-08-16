@@ -76,6 +76,13 @@ public class RoomServiceImpl implements RoomService {
         return RoomMapper.toDTO(savedRoom);
     }
 
+    @Override
+    public RoomDTO getRoomByPublicId(String publicId) {
+        Room room = roomRepository.findByPublicId(publicId)
+                .orElseThrow(() -> new ResourceNotFoundException("Room not found"));
+        return RoomMapper.toDTO(room);
+    }
+
 
     @Override
     @Transactional

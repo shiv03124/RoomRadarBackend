@@ -77,12 +77,18 @@ public class RoomController {
         return roomService.getRoomById(roomId);
     }
 
+    @GetMapping("/getRoom/byPublicId/{publicId}")
+    public RoomDTO getRoomById(@PathVariable String publicId) {
+        return roomService.getRoomByPublicId(publicId);
+    }
+
+
     @GetMapping("/")
     public List<RoomDTO> getAllRooms() {
         return roomService.getAllRooms();
     }
-    @GetMapping("/getAllRoomsWithoutApprove")
-    public List<RoomDTO> getAllRoomsWithoutApprove() {
+    @GetMapping("/getAllRoomsForAdmin")
+    public List<RoomDTO> getAllRoomsForAdmin() {
         return roomService.getAllRoomsForAdmin();
     }
 

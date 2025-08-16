@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 public class Room {
@@ -61,6 +62,25 @@ public class Room {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    @Column(unique = true, updatable = false, nullable = false)
+    private String publicId;
+
+    @PrePersist
+    public void prePersist() {
+        if (publicId == null || publicId.isEmpty()) {
+            publicId = UUID.randomUUID().toString();
+        }
+        createdAt = LocalDateTime.now();
+    }
+
+    // Getter & Setter for publicId
+    public String getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
+    }
     // Getters and Setters
 
     public List<Application> getApplications(){

@@ -35,6 +35,7 @@ public class RoomMapper {
         dto.setNoofvacancies(room.getNoofvacancies());
         dto.setCreatedAt(room.getCreatedAt());
         dto.setUpdatedAt(room.getUpdatedAt());
+        dto.setPublicId(room.getPublicId());
 
         // Map User -> UserDTO
         if (room.getUser() != null) {
@@ -56,6 +57,7 @@ public class RoomMapper {
             adminDTO.setEmail(admin.getEmail());
             adminDTO.setRole(admin.getRole());
             dto.setApprovedBy(adminDTO);
+
         }
 
         // Map Applications -> ApplicationDTO list
@@ -76,6 +78,7 @@ public class RoomMapper {
         room.setAddress(dto.getAddress());
         room.setCity(dto.getCity());
         room.setArea(dto.getArea());
+        room.setPublicId(dto.getPublicId());
         room.setAccommodationType(dto.getAccommodationType());
         room.setConfiguration(dto.getConfiguration());
         room.setFurnished(dto.getFurnished());

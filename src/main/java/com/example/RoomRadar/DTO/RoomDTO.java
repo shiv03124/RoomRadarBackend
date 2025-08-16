@@ -27,6 +27,7 @@ public class RoomDTO {
     private Boolean isAvailable;
     private List<String> images;
     private List<String> amenities;
+    private String publicId;
 
     private UserDTO user;
     private AdminDTO approvedBy;
@@ -229,5 +230,13 @@ public class RoomDTO {
 
     public void setTotalNoOfPeoples(int totalNoOfPeoples) {
         this.totalNoOfPeoples = totalNoOfPeoples;
+    }
+
+    public String getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
     }
 }

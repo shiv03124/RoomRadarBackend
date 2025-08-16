@@ -67,7 +67,8 @@
         @Bean
         CorsConfigurationSource corsConfigurationSource() {
             CorsConfiguration config = new CorsConfiguration();
-            config.setAllowedOrigins(List.of("https://roomradar.in/", "https://www.roomradar.in/"));
+//            config.setAllowedOrigins(List.of("https://roomradar.in/", "https://www.roomradar.in/"));
+            config.setAllowedOrigins(List.of("http://localhost:3000/","https://roomradar.in/"));
             config.setAllowCredentials(true);
             config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             config.setAllowedHeaders(List.of("*"));
