@@ -3,10 +3,14 @@ package com.example.RoomRadar.serviceImpl;
 import com.example.RoomRadar.Model.EmailOtp;
 import com.example.RoomRadar.Repository.EmailOtpRepository;
 import com.example.RoomRadar.service.EmailService;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -71,13 +75,22 @@ public class EmailServiceimpl implements EmailService {
 
     @Override
     public void sendEmail(String to, String subject, String body) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("roomradar@example.com");  // use your domain
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(body);
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-        mailSender.send(message);
+            // Set custom name with email address
+            helper.setFrom(new InternetAddress("roomradar@example.com", "RoomRadar Support"));
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(body, false); // false = plain text, true = HTML
+
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException("Failed to send email", e);
+        } catch (java.io.UnsupportedEncodingException e) {
+            throw new RuntimeException("Invalid sender name encoding", e);
+        }
     }
 
     @Override
